@@ -82,6 +82,7 @@
         .notebook-lines {
             background-image: linear-gradient(var(--line-color) 1px, transparent 1px);
             background-size: 100% 28px;
+            will-change: transform;
         }
 
         /* Gothic / Grunge custom styles */
@@ -286,11 +287,11 @@
     <!-- Ambient Vignette Overlay -->
     <div class="fixed inset-0 vignette-overlay z-40"></div>
 
-    <!-- Background Noise/Pattern -->
-    <div class="fixed inset-0 notebook-lines opacity-50 pointer-events-none z-[1]"></div>
+    <!-- Background Noise/Pattern with overflow buffer for parallax movement -->
+    <div class="fixed -top-[15%] -bottom-[15%] left-0 right-0 notebook-lines opacity-50 pointer-events-none z-[1] h-[130vh]"></div>
     
-    <!-- Subtle Moving Particles Canvas (z-index 조정을 통해 어두운 카드 위에서도 완벽히 보이도록 설정) -->
-    <canvas id="particle-canvas" class="fixed inset-0 z-20 pointer-events-none"></canvas>
+    <!-- Subtle Moving Particles Canvas with overflow buffer for parallax movement -->
+    <canvas id="particle-canvas" class="fixed -top-[15%] -bottom-[15%] left-0 right-0 z-20 pointer-events-none h-[130vh]"></canvas>
 
     <!-- Sound & System Toggle Controllers -->
     <div class="fixed top-6 right-6 z-50 flex items-center gap-3">
@@ -887,7 +888,7 @@
             
             function resize() {
                 canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+                canvas.height = window.innerHeight * 1.3; // Provide height buffer for smooth scroll parallax
             }
             window.addEventListener('resize', resize);
             resize();
@@ -1194,6 +1195,23 @@
             document.getElementById('notebook-container').addEventListener('click', () => {
                 realInput.focus();
                 if (!isAudioInitialized) initAudio();
+            });
+
+            // Smooth background parallax scroll event listener
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY || window.pageYOffset;
+                
+                // Gentle depth translation for the notebook lines grid (foreground style backdrop)
+                const lines = document.querySelector('.notebook-lines');
+                if (lines) {
+                    lines.style.transform = `translateY(${scrolled * 0.14}px)`;
+                }
+                
+                // Different translation speed for particle layer to create a layered 3D parallax feel
+                const canvas = document.getElementById('particle-canvas');
+                if (canvas) {
+                    canvas.style.transform = `translateY(${scrolled * 0.07}px)`;
+                }
             });
 
             initVotingSystem();
