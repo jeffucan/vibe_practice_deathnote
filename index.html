@@ -292,6 +292,26 @@
 </head>
 <body class="relative min-h-screen select-none">
 
+    <!-- Ryuk Shinigami Eyes Easter Egg Overlay -->
+    <div id="ryuk-overlay" onclick="dismissRyukOverlay()" class="fixed inset-0 z-[49] hidden opacity-0 transition-all duration-1000 bg-neutral-950 flex flex-col items-center justify-center cursor-pointer">
+        <!-- Ryuk Background Image with dark blend -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity scale-110 transition-transform duration-[4000ms] ease-out" id="ryuk-bg" style="background-image: url('ruke.jpg');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black"></div>
+        
+        <!-- Ryuk Majestic Speech Text -->
+        <div class="relative z-10 text-center px-6 max-w-2xl transform scale-90 transition-transform duration-1000" id="ryuk-content">
+            <p class="font-harsh text-6xl sm:text-7xl md:text-8xl text-red-600 tracking-wider grunge-glow-red select-none animate-pulse leading-none">
+                "역시 인간은 재밌어..."
+            </p>
+            <p class="font-cinzel text-xs text-neutral-500 tracking-[0.4em] uppercase mt-8 select-none">
+                - 사신 류크 (Ryuk)
+            </p>
+            <p class="text-[11px] text-red-500/50 tracking-wider uppercase mt-12 animate-pulse font-sans">
+                [ 화면을 터치해 다시 인간들의 법정으로 복귀 ]
+            </p>
+        </div>
+    </div>
+
     <!-- Screen Flash Overlay (For Gamification Level Unlocks) -->
     <div id="screen-flash" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300"></div>
 
@@ -1788,7 +1808,43 @@
                 setTimeout(() => header.classList.remove('glitch-active'), 800);
             }
 
-            showToast("🩸 사신의 눈 계약 완결. 당신의 잔여 수명의 절반을 대가로, 신세계의 모든 진실을 꿰뚫어 봅니다.");
+            // Trigger Ryuk Easter Egg Overlay
+            const ryukOverlay = document.getElementById('ryuk-overlay');
+            const ryukBg = document.getElementById('ryuk-bg');
+            const ryukContent = document.getElementById('ryuk-content');
+            
+            if (ryukOverlay) {
+                ryukOverlay.classList.remove('hidden');
+                // Force layout reflow for CSS transition
+                void ryukOverlay.offsetWidth;
+                ryukOverlay.classList.remove('opacity-0');
+                ryukOverlay.classList.add('opacity-100');
+                
+                if (ryukBg) ryukBg.classList.remove('scale-110');
+                if (ryukContent) ryukContent.classList.remove('scale-90');
+            }
+
+            showToast("🩸 역시 인간은 재밌어... 사신 류크의 눈을 빌어 영혼을 대면합니다.");
+        }
+
+        // Dismiss Ryuk's cinematic overlay
+        function dismissRyukOverlay() {
+            const ryukOverlay = document.getElementById('ryuk-overlay');
+            const ryukBg = document.getElementById('ryuk-bg');
+            const ryukContent = document.getElementById('ryuk-content');
+
+            if (ryukOverlay) {
+                ryukOverlay.classList.remove('opacity-100');
+                ryukOverlay.classList.add('opacity-0');
+                
+                if (ryukBg) ryukBg.classList.add('scale-110');
+                if (ryukContent) ryukContent.classList.add('scale-90');
+
+                setTimeout(() => {
+                    ryukOverlay.classList.add('hidden');
+                }, 1000);
+            }
+            triggerScratchSound();
         }
 
         // Module function binding to window for inline HTML handlers (ONCLICK)
@@ -1804,6 +1860,7 @@
         window.likeTestimony = likeTestimony;
         window.filterGuestbook = filterGuestbook;
         window.signEyeContract = signEyeContract;
+        window.dismissRyukOverlay = dismissRyukOverlay;
 
         // On Load Starter
         window.onload = function () {
