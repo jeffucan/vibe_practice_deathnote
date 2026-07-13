@@ -310,41 +310,41 @@
     </div>
 
     <!-- Gamified HUD Status Badge Widget (Left Floating) -->
-    <div id="hud-widget" class="fixed bottom-6 left-6 z-[45] max-w-[300px] w-full bg-neutral-950/95 border border-neutral-900 rounded-xl p-4 shadow-2xl backdrop-blur-md hidden md:flex flex-col gap-3 scale-0 transition-all duration-700 select-none">
-        <div class="flex items-center justify-between border-b border-neutral-900 pb-2">
-            <span class="font-cinzel text-[10px] tracking-widest text-neutral-500 font-bold uppercase flex items-center gap-1.5">
+    <div id="hud-widget" class="fixed bottom-6 left-6 z-[45] max-w-[340px] w-full bg-neutral-950/95 border border-neutral-900 rounded-xl p-5 shadow-2xl backdrop-blur-md hidden md:flex flex-col gap-4 scale-0 transition-all duration-700 select-none">
+        <div class="flex items-center justify-between border-b border-neutral-900 pb-2.5">
+            <span class="font-cinzel text-xs tracking-widest text-neutral-500 font-bold uppercase flex items-center gap-2">
                 <i class="fa-solid fa-scale-balanced text-red-500"></i> 심판의 서 동기화
             </span>
-            <span id="hud-sync-percentage" class="font-mono text-xs font-bold text-neutral-200">0%</span>
+            <span id="hud-sync-percentage" class="font-mono text-sm font-bold text-neutral-200">0%</span>
         </div>
         
         <!-- Status Label and Level Tracker -->
-        <div class="flex flex-col gap-1">
-            <div class="text-[9px] text-neutral-500 uppercase tracking-wider">현재 신념 등급</div>
-            <div id="hud-level-badge" class="font-cinzel text-sm font-bold text-red-500 tracking-wide">방관하는 시민 (LV. 1)</div>
+        <div class="flex flex-col gap-1.5">
+            <div class="text-[11px] text-neutral-500 uppercase tracking-wider font-semibold">현재 신념 등급</div>
+            <div id="hud-level-badge" class="font-cinzel text-base font-bold text-red-500 tracking-wide">방관하는 시민 (LV. 1)</div>
         </div>
 
         <!-- Mini Progress bar within HUD -->
-        <div class="w-full bg-neutral-900 h-1 rounded-full overflow-hidden border border-neutral-800">
+        <div class="w-full bg-neutral-900 h-1.5 rounded-full overflow-hidden border border-neutral-800">
             <div id="hud-mini-bar" class="h-full bg-red-600 w-0 transition-all duration-300"></div>
         </div>
 
         <!-- Collectible Artifact Inventory -->
-        <div class="grid grid-cols-2 gap-2 mt-1">
+        <div class="grid grid-cols-2 gap-3 mt-1">
             <!-- Artifact 1: Shinigami Apple -->
-            <div id="artifact-apple" class="collectible-slot flex flex-col items-center justify-center py-2.5 rounded-lg border border-neutral-900 bg-neutral-950/50 text-neutral-700 transition-all duration-300">
-                <i class="fa-solid fa-apple-whole text-base mb-1"></i>
-                <span class="text-[8px] font-mono tracking-widest">사신의 붉은 사과</span>
+            <div id="artifact-apple" class="collectible-slot flex flex-col items-center justify-center py-3 rounded-lg border border-neutral-900 bg-neutral-950/50 text-neutral-700 transition-all duration-300">
+                <i class="fa-solid fa-apple-whole text-lg mb-1.5"></i>
+                <span class="text-[10px] font-mono tracking-widest font-semibold">사신의 붉은 사과</span>
             </div>
             <!-- Artifact 2: Sugar Cube -->
-            <div id="artifact-sugar" class="collectible-slot flex flex-col items-center justify-center py-2.5 rounded-lg border border-neutral-900 bg-neutral-950/50 text-neutral-700 transition-all duration-300">
-                <i class="fa-solid fa-cubes text-base mb-1"></i>
-                <span class="text-[8px] font-mono tracking-widest">엘의 각설탕</span>
+            <div id="artifact-sugar" class="collectible-slot flex flex-col items-center justify-center py-3 rounded-lg border border-neutral-900 bg-neutral-950/50 text-neutral-700 transition-all duration-300">
+                <i class="fa-solid fa-cubes text-lg mb-1.5"></i>
+                <span class="text-[10px] font-mono tracking-widest font-semibold">엘의 각설탕</span>
             </div>
         </div>
 
         <!-- 100% Ultimate Secret Action: Shinigami Eye Contract (Initially disabled) -->
-        <button id="secret-contract-btn" onclick="signEyeContract()" class="w-full py-2 bg-neutral-900 text-neutral-600 border border-neutral-800 text-[10px] font-cinzel font-bold tracking-widest uppercase rounded-lg cursor-not-allowed transition-all duration-300" disabled>
+        <button id="secret-contract-btn" onclick="signEyeContract()" class="w-full py-3 bg-neutral-900 text-neutral-600 border border-neutral-800 text-[11px] font-cinzel font-bold tracking-widest uppercase rounded-lg cursor-not-allowed transition-all duration-300" disabled>
             <i class="fa-solid fa-eye text-red-700 animate-pulse mr-1"></i> 사신의 눈 계약 (100% 잠금)
         </button>
     </div>
@@ -391,7 +391,7 @@
             <!-- Atmospheric Warning -->
             <div class="mb-4 text-center opacity-70 animate-pulse">
                 <i class="fa-solid fa-triangle-exclamation text-xs text-red-600 mr-1.5"></i>
-                <span class="text-[10px] tracking-widest text-neutral-500 uppercase">Warning: Enter at your own risk</span>
+                <span class="text-xs tracking-widest text-neutral-500 uppercase">Warning: Enter at your own risk</span>
             </div>
 
             <!-- Ambient Gothic Title with majestic typewriter container -->
@@ -414,15 +414,15 @@
 
                 <!-- Notebook Rules Watermark -->
                 <div class="text-center mb-8 mt-4">
-                    <p class="font-cinzel text-[10px] text-neutral-600 tracking-widest uppercase font-bold">RULES OF ENGAGEMENT</p>
-                    <p class="text-[11px] text-neutral-400 italic mt-2 font-handwriting tracking-wide text-lg">
+                    <p class="font-cinzel text-xs text-neutral-600 tracking-widest uppercase font-bold">RULES OF ENGAGEMENT</p>
+                    <p class="text-sm text-neutral-400 italic mt-2 font-handwriting tracking-wide text-2xl">
                         "이 노트에 이름이 적힌 인간은 죽는다..."
                     </p>
                 </div>
 
                 <!-- Input area -->
                 <div class="relative mt-8 group cursor-pointer" onclick="focusRealInput()">
-                    <label class="block text-center text-[11px] tracking-[0.25em] text-neutral-400 uppercase mb-4 font-bold">
+                    <label class="block text-center text-xs tracking-[0.25em] text-neutral-400 uppercase mb-4 font-bold">
                         이곳에 당신의 이름을 작성하십시오
                     </label>
                     
@@ -434,7 +434,7 @@
                         <!-- Simulated flashing cursor or dynamic text -->
                         <span id="visual-input" class="font-handwriting text-2xl sm:text-3xl md:text-4xl text-neutral-200 tracking-wider truncate max-w-full px-2"></span>
                         <span id="input-cursor" class="w-[2px] h-8 bg-neutral-500 animate-pulse ml-1 shrink-0"></span>
-                        <span id="input-placeholder" class="absolute text-neutral-700 text-xs sm:text-sm tracking-widest select-none pointer-events-none">이곳에 이름을 적으세요</span>
+                        <span id="input-placeholder" class="absolute text-neutral-700 text-sm tracking-widest select-none pointer-events-none">이곳에 이름을 적으세요</span>
                     </div>
                 </div>
 
@@ -444,7 +444,7 @@
                         <span>노트에 이름 적기</span>
                         <i class="fa-solid fa-feather-pointed text-sm"></i>
                     </button>
-                    <p class="text-[10px] text-neutral-600 text-center leading-relaxed">
+                    <p class="text-[11px] text-neutral-600 text-center leading-relaxed">
                         * 이름을 완성한 후 엔터 또는 버튼을 눌러 갈림길로 진입하세요.<br>
                         (Tone.js를 활용한 사각사각 손글씨 펜 소리가 재생됩니다)
                     </p>
@@ -464,12 +464,12 @@
                 DEATH <span class="text-neutral-600">NOTE</span>
             </div>
             <div class="flex flex-col xs:flex-row items-center gap-3 w-full sm:w-auto">
-                <div class="text-[10px] tracking-wider text-neutral-400 border border-neutral-800/80 px-4 py-2 rounded-full bg-neutral-950/80 backdrop-blur flex items-center justify-center gap-2 w-full sm:w-auto">
+                <div class="text-xs tracking-wider text-neutral-400 border border-neutral-800/80 px-4 py-2 rounded-full bg-neutral-950/80 backdrop-blur flex items-center justify-center gap-2 w-full sm:w-auto">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping shrink-0"></span>
-                    <span class="truncate">DESK ACCESS: <strong id="visitor-identity" class="text-neutral-200 font-handwriting text-lg ml-1">GUEST</strong></span>
+                    <span class="truncate">DESK ACCESS: <strong id="visitor-identity" class="text-neutral-200 font-handwriting text-2xl ml-1">GUEST</strong></span>
                 </div>
                 <!-- Interactive Logout Button -->
-                <button id="logout-btn" onclick="logout()" class="w-full sm:w-auto px-4 py-2 rounded-full border border-neutral-800 bg-neutral-950/80 text-[10px] text-neutral-400 hover:text-red-400 hover:border-red-900/50 flex items-center justify-center gap-1.5 transition-all cursor-pointer">
+                <button id="logout-btn" onclick="logout()" class="w-full sm:w-auto px-4 py-2 rounded-full border border-neutral-800 bg-neutral-950/80 text-xs text-neutral-400 hover:text-red-400 hover:border-red-900/50 flex items-center justify-center gap-1.5 transition-all cursor-pointer">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span>로그아웃</span>
                 </button>
@@ -728,50 +728,50 @@
                 
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 border-b border-neutral-900 pb-6 relative z-10">
                     <div>
-                        <span class="text-[9px] tracking-[0.3em] text-neutral-500 font-mono uppercase font-bold">WITNESS ROSTRUM</span>
+                        <span class="text-xs tracking-[0.3em] text-neutral-500 font-mono uppercase font-bold">WITNESS ROSTRUM</span>
                         <h3 class="font-cinzel text-lg sm:text-xl font-bold text-neutral-100 mt-1">목격자들의 법정: 정의의 변론</h3>
                         <p class="text-xs text-neutral-400 mt-1">이 미스터리한 힘에 대항하는 당신의 생생한 사상을 한 줄의 기록으로 영원히 보존하십시오.</p>
                     </div>
                     <!-- Filtering controls -->
                     <div class="flex flex-wrap gap-2 shrink-0">
-                        <button onclick="filterGuestbook('all')" id="filter-all" class="px-3 py-1.5 rounded-md text-[10px] font-mono font-bold tracking-wider bg-neutral-900 text-neutral-200 hover:bg-neutral-800 transition-colors border border-neutral-800">ALL</button>
-                        <button onclick="filterGuestbook('kira')" id="filter-kira" class="px-3 py-1.5 rounded-md text-[10px] font-mono font-bold tracking-wider bg-neutral-950 text-red-500/60 hover:text-red-400 transition-colors border border-red-950/30">KIRA SIDE</button>
-                        <button onclick="filterGuestbook('l')" id="filter-l" class="px-3 py-1.5 rounded-md text-[10px] font-mono font-bold tracking-wider bg-neutral-950 text-sky-400/60 hover:text-sky-400 transition-colors border border-sky-950/30">L SIDE</button>
+                        <button onclick="filterGuestbook('all')" id="filter-all" class="px-3 py-1.5 rounded-md text-xs font-mono font-bold tracking-wider bg-neutral-900 text-neutral-200 hover:bg-neutral-800 transition-colors border border-neutral-800">ALL</button>
+                        <button onclick="filterGuestbook('kira')" id="filter-kira" class="px-3 py-1.5 rounded-md text-xs font-mono font-bold tracking-wider bg-neutral-950 text-red-500/60 hover:text-red-400 transition-colors border border-red-950/30">KIRA SIDE</button>
+                        <button onclick="filterGuestbook('l')" id="filter-l" class="px-3 py-1.5 rounded-md text-xs font-mono font-bold tracking-wider bg-neutral-950 text-sky-400/60 hover:text-sky-400 transition-colors border border-sky-950/30">L SIDE</button>
                     </div>
                 </div>
 
                 <!-- Input Formulation -->
                 <div class="mb-10 relative z-10 bg-neutral-950/80 border border-neutral-900 rounded-xl p-4 sm:p-6">
                     <div class="flex items-center gap-3 mb-4">
-                        <span class="text-[10px] text-neutral-400 tracking-wider">기록자: <strong id="guest-writer-identity" class="font-handwriting text-xl text-neutral-100 ml-1">GUEST</strong></span>
+                        <span class="text-xs text-neutral-400 tracking-wider">기록자: <strong id="guest-writer-identity" class="font-handwriting text-2xl text-neutral-100 ml-1">GUEST</strong></span>
                         <span class="text-neutral-700">|</span>
-                        <span class="text-[10px] text-neutral-500">당신이 대변하는 신념의 계파를 고르십시오:</span>
+                        <span class="text-xs text-neutral-500">당신이 대변하는 신념의 계파를 고르십시오:</span>
                     </div>
 
                     <!-- Side select buttons -->
                     <div class="grid grid-cols-3 gap-2 mb-4">
-                        <button onclick="selectGuestbookSide('kira')" id="side-btn-kira" class="py-2 px-3 text-[10px] sm:text-xs font-cinzel rounded-lg border border-neutral-900 bg-neutral-950 text-neutral-500 hover:border-red-900/50 hover:text-red-400 transition-all cursor-pointer">
+                        <button onclick="selectGuestbookSide('kira')" id="side-btn-kira" class="py-2.5 px-3 text-xs sm:text-sm font-cinzel rounded-lg border border-neutral-900 bg-neutral-950 text-neutral-500 hover:border-red-900/50 hover:text-red-400 transition-all cursor-pointer">
                             KIRA (신세계)
                         </button>
-                        <button onclick="selectGuestbookSide('l')" id="side-btn-l" class="py-2 px-3 text-[10px] sm:text-xs font-cinzel rounded-lg border border-neutral-900 bg-neutral-950 text-neutral-500 hover:border-sky-900/50 hover:text-sky-400 transition-all cursor-pointer">
+                        <button onclick="selectGuestbookSide('l')" id="side-btn-l" class="py-2.5 px-3 text-xs sm:text-sm font-cinzel rounded-lg border border-neutral-900 bg-neutral-950 text-neutral-500 hover:border-sky-900/50 hover:text-sky-400 transition-all cursor-pointer">
                             L (법과 수호)
                         </button>
-                        <button onclick="selectGuestbookSide('neutral')" id="side-btn-neutral" class="py-2 px-3 text-[10px] sm:text-xs font-cinzel rounded-lg border border-neutral-900 bg-neutral-950 text-neutral-500 hover:border-neutral-700 hover:text-neutral-300 transition-all cursor-pointer">
+                        <button onclick="selectGuestbookSide('neutral')" id="side-btn-neutral" class="py-2.5 px-3 text-xs sm:text-sm font-cinzel rounded-lg border border-neutral-900 bg-neutral-950 text-neutral-500 hover:border-neutral-700 hover:text-neutral-300 transition-all cursor-pointer">
                             SKEPTIC (회의적)
                         </button>
                     </div>
 
                     <!-- Input Box -->
                     <div class="relative">
-                        <textarea id="guestbook-text" maxlength="120" rows="2" oninput="onGuestbookWriting()" placeholder="사법 체계를 조롱하는 힘에 대한 당신의 견해는 무엇입니까? (최대 120자)..." class="w-full bg-[#030303] text-neutral-200 placeholder-neutral-700 border border-neutral-900 focus:border-neutral-700 outline-none p-3.5 rounded-lg text-xs tracking-wide resize-none leading-relaxed font-sans transition-all duration-300"></textarea>
-                        <div class="absolute bottom-2.5 right-3 text-[9px] font-mono text-neutral-600">
+                        <textarea id="guestbook-text" maxlength="120" rows="2" oninput="onGuestbookWriting()" placeholder="사법 체계를 조롱하는 힘에 대한 당신의 견해는 무엇입니까? (최대 120자)..." class="w-full bg-[#030303] text-neutral-200 placeholder-neutral-700 border border-neutral-900 focus:border-neutral-700 outline-none p-4 rounded-lg text-sm tracking-wide resize-none leading-relaxed font-sans transition-all duration-300"></textarea>
+                        <div class="absolute bottom-2.5 right-3 text-xs font-mono text-neutral-600">
                             <span id="char-counter">0</span> / 120
                         </div>
                     </div>
 
                     <!-- Submit action -->
                     <div class="mt-4 flex justify-end">
-                        <button onclick="submitTestimony()" class="px-5 py-2.5 bg-neutral-100 hover:bg-white text-neutral-950 rounded-lg text-[10px] font-cinzel tracking-widest uppercase font-bold flex items-center gap-2 transition-all active:scale-[0.98] shadow-lg cursor-pointer">
+                        <button onclick="submitTestimony()" class="px-5 py-2.5 bg-neutral-100 hover:bg-white text-neutral-950 rounded-lg text-xs font-cinzel tracking-widest uppercase font-bold flex items-center gap-2 transition-all active:scale-[0.98] shadow-lg cursor-pointer">
                             <span>신념 기록하기</span>
                             <i class="fa-solid fa-feather"></i>
                         </button>
@@ -1498,14 +1498,14 @@
             filters.forEach(f => {
                 const btn = document.getElementById(`filter-${f}`);
                 if (!btn) return;
-                btn.className = "px-3 py-1.5 rounded-md text-[10px] font-mono font-bold tracking-wider bg-neutral-950 text-neutral-500/60 hover:text-neutral-300 transition-colors border border-neutral-900";
+                btn.className = "px-3 py-1.5 rounded-md text-xs font-mono font-bold tracking-wider bg-neutral-950 text-neutral-500/60 hover:text-neutral-300 transition-colors border border-neutral-900";
             });
 
             const activeBtn = document.getElementById(`filter-${filter}`);
             if (activeBtn) {
-                if (filter === 'all') activeBtn.className = "px-3 py-1.5 rounded-md text-[10px] font-mono font-bold tracking-wider bg-neutral-900 text-neutral-200 transition-colors border border-neutral-800";
-                if (filter === 'kira') activeBtn.className = "px-3 py-1.5 rounded-md text-[10px] font-mono font-bold tracking-wider bg-red-950/40 text-red-400 transition-colors border border-red-900/40 shadow-[0_0_10px_rgba(239,68,68,0.05)]";
-                if (filter === 'l') activeBtn.className = "px-3 py-1.5 rounded-md text-[10px] font-mono font-bold tracking-wider bg-sky-950/40 text-sky-400 transition-colors border border-sky-900/40 shadow-[0_0_10px_rgba(56,189,248,0.05)]";
+                if (filter === 'all') activeBtn.className = "px-3 py-1.5 rounded-md text-xs font-mono font-bold tracking-wider bg-neutral-900 text-neutral-200 transition-colors border border-neutral-800";
+                if (filter === 'kira') activeBtn.className = "px-3 py-1.5 rounded-md text-xs font-mono font-bold tracking-wider bg-red-950/40 text-red-400 transition-colors border border-red-900/40 shadow-[0_0_10px_rgba(239,68,68,0.05)]";
+                if (filter === 'l') activeBtn.className = "px-3 py-1.5 rounded-md text-xs font-mono font-bold tracking-wider bg-sky-950/40 text-sky-400 transition-colors border border-sky-900/40 shadow-[0_0_10px_rgba(56,189,248,0.05)]";
             }
 
             renderGuestbookEntries();
@@ -1581,13 +1581,13 @@
                 let borderGlow = 'border-neutral-900/60';
                 
                 if (entry.side === 'kira') {
-                    sideBadge = `<span class="text-[8px] bg-red-950/60 text-red-500 border border-red-900/40 px-2 py-0.5 rounded font-bold">KIRA SIDE</span>`;
+                    sideBadge = `<span class="text-[10px] bg-red-950/60 text-red-500 border border-red-900/40 px-2 py-0.5 rounded font-bold">KIRA SIDE</span>`;
                     borderGlow = 'border-neutral-900 hover:border-red-900/30 shadow-[0_4px_12px_rgba(239,68,68,0.02)]';
                 } else if (entry.side === 'l') {
-                    sideBadge = `<span class="text-[8px] bg-sky-950/60 text-sky-400 border border-sky-900/40 px-2 py-0.5 rounded font-bold">L SIDE</span>`;
+                    sideBadge = `<span class="text-[10px] bg-sky-950/60 text-sky-400 border border-sky-900/40 px-2 py-0.5 rounded font-bold">L SIDE</span>`;
                     borderGlow = 'border-neutral-900 hover:border-sky-900/30 shadow-[0_4px_12px_rgba(56,189,248,0.02)]';
                 } else {
-                    sideBadge = `<span class="text-[8px] bg-neutral-900 text-neutral-400 border border-neutral-800 px-2 py-0.5 rounded font-bold">SKEPTIC</span>`;
+                    sideBadge = `<span class="text-[10px] bg-neutral-900 text-neutral-400 border border-neutral-800 px-2 py-0.5 rounded font-bold">SKEPTIC</span>`;
                     borderGlow = 'border-neutral-900 hover:border-neutral-800';
                 }
 
@@ -1603,17 +1603,17 @@
                         <div>
                             <div class="flex justify-between items-start gap-2 mb-2">
                                 <div class="flex items-center gap-2">
-                                    <span class="font-handwriting text-xl text-neutral-300 group-hover:text-white transition-colors truncate max-w-[150px]">${entry.author}</span>
+                                    <span class="font-handwriting text-2xl text-neutral-300 group-hover:text-white transition-colors truncate max-w-[150px]">${entry.author}</span>
                                     ${sideBadge}
                                 </div>
-                                <span class="text-[8px] font-mono text-neutral-600 shrink-0">${dateStr}</span>
+                                <span class="text-[10px] font-mono text-neutral-600 shrink-0">${dateStr}</span>
                             </div>
-                            <p class="text-xs text-neutral-400 leading-relaxed font-sans pr-4 select-text">
+                            <p class="text-sm text-neutral-400 leading-relaxed font-sans pr-4 select-text">
                                 "${entry.content}"
                             </p>
                         </div>
                         <div class="flex justify-end border-t border-neutral-900 pt-2.5 mt-1">
-                            <button onclick="likeTestimony('${entry.id}')" class="flex items-center gap-1.5 text-[9px] text-neutral-500 hover:text-red-400 transition-colors cursor-pointer group/like">
+                            <button onclick="likeTestimony('${entry.id}')" class="flex items-center gap-1.5 text-[11px] text-neutral-500 hover:text-red-400 transition-colors cursor-pointer group/like">
                                 <i class="fa-solid fa-heart transition-transform group-hover/like:scale-125"></i>
                                 <span>공감 <strong class="text-neutral-300 font-mono">${entry.likes}</strong></span>
                             </button>
@@ -1761,7 +1761,7 @@
             const btn = document.getElementById('secret-contract-btn');
             if (btn) {
                 btn.removeAttribute('disabled');
-                btn.className = "w-full py-2.5 bg-gradient-to-r from-red-900 to-red-600 text-white border border-red-500 text-[10px] font-cinzel font-bold tracking-widest uppercase rounded-lg active:scale-[0.98] transition-all duration-300 shadow-[0_0_15px_rgba(239,68,68,0.5)] cursor-pointer hover:shadow-[0_0_25px_rgba(239,68,68,0.8)]";
+                btn.className = "w-full py-3 bg-gradient-to-r from-red-900 to-red-600 text-white border border-red-500 text-[11px] font-cinzel font-bold tracking-widest uppercase rounded-lg active:scale-[0.98] transition-all duration-300 shadow-[0_0_15px_rgba(239,68,68,0.5)] cursor-pointer hover:shadow-[0_0_25px_rgba(239,68,68,0.8)]";
                 triggerMilestoneSound();
                 showToast("🔥 사신과의 계약 조건 성립: 심판 기록 100% 도달! 눈 계약을 시행할 수 있습니다.");
             }
