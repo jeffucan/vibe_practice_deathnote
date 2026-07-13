@@ -27,6 +27,7 @@
             --line-color: rgba(255, 255, 255, 0.02);
             --toast-bg: #0a0a0a;
             --toast-border: #222222;
+            --particle-color: rgba(255, 255, 255, 0.15);
         }
 
         /* Light Mode (Premium Aged Parchment Look) */
@@ -41,6 +42,7 @@
             --line-color: rgba(0, 0, 0, 0.04);
             --toast-bg: #ffffff;
             --toast-border: #dddddd;
+            --particle-color: rgba(0, 0, 0, 0.12);
         }
 
         /* Custom Font Assignments */
@@ -287,8 +289,8 @@
     <!-- Background Noise/Pattern -->
     <div class="fixed inset-0 notebook-lines opacity-50 pointer-events-none z-[1]"></div>
     
-    <!-- Subtle Moving Particles Canvas -->
-    <canvas id="particle-canvas" class="fixed inset-0 z-0 pointer-events-none"></canvas>
+    <!-- 고품질의 은은하고 인터랙티브한 사신 세계 먼지 파티클 캔버스 -->
+    <canvas id="particle-canvas" class="fixed inset-0 z-[2] pointer-events-none"></canvas>
 
     <!-- Sound & System Toggle Controllers -->
     <div class="fixed top-6 right-6 z-50 flex items-center gap-3">
@@ -356,7 +358,7 @@
                 <!-- Notebook Rules Watermark -->
                 <div class="text-center mb-8 mt-4">
                     <p class="font-cinzel text-[10px] text-neutral-600 tracking-widest uppercase font-bold">RULES OF ENGAGEMENT</p>
-                    <p class="text-[11px] text-neutral-400 italic mt-2 font-handwriting tracking-wide">
+                    <p class="text-[11px] text-neutral-400 italic mt-2 font-handwriting tracking-wide text-lg">
                         "이 노트에 이름이 적힌 인간은 죽는다..."
                     </p>
                 </div>
@@ -421,7 +423,7 @@
         <div class="w-full max-w-4xl mx-auto px-6 mb-12 md:mb-16 text-center">
             <span class="text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.5em] text-neutral-500 uppercase font-bold">THE ULTIMATE BRANDING QUESTION</span>
             <h2 class="text-lg sm:text-xl md:text-3xl font-bold tracking-tight text-neutral-100 mt-4 leading-relaxed font-cinzel">
-                "당신은 라이토의 <span class="text-red-500 underline underline-offset-4 font-black font-cinzel">신세계</span>에 서겠습니까,<br class="md:hidden"> 엘의 <span class="text-sky-400 underline underline-offset-4 font-black font-cinzel">정의</span>에 서겠습니까?"
+                "당신은 라이토의 <span class="text-red-500 underline underline-offset-4 font-black font-cinzel">신세계</span>에 서겠습니까,<br class="md:hidden"> 엘의 <span class="text-sky-400 underline underline-offset-4 font-black font-cinzel">진실</span>에 서겠습니까?"
             </h2>
             <div class="w-12 h-[1px] bg-neutral-800 mx-auto mt-6"></div>
         </div>
@@ -461,7 +463,7 @@
                     <!-- Image Block -->
                     <div class="md:col-span-5 flex justify-center mt-2 md:mt-0">
                         <div class="relative max-w-[150px] sm:max-w-[180px] md:max-w-[200px] w-full aspect-[2/3] overflow-hidden rounded-xl border border-neutral-800 shadow-2xl group-hover:border-red-500/30 transition-colors duration-500">
-                            <img src="image_ef887e.jpg" alt="Kira" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700 hover:scale-105" onerror="this.src='https://placehold.co/200x300/0a0a0a/ffffff?text=Kira'">
+                            <img src="https://placehold.co/200x300/100a0a/ff3333?text=Kira" alt="Kira" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700 hover:scale-105" onerror="this.src='https://placehold.co/200x300/0a0a0a/ffffff?text=Kira'">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent pointer-events-none"></div>
                         </div>
                     </div>
@@ -469,7 +471,7 @@
 
                 <div class="mt-8 border-t border-neutral-900 pt-5 flex flex-col gap-2 relative z-10">
                     <span class="text-[9px] text-neutral-500 tracking-wider font-semibold uppercase">KIRA'S PROMISE</span>
-                    <p class="font-handwriting text-xl sm:text-2xl md:text-3xl text-red-400/90 tracking-wide leading-normal">
+                    <p class="font-handwriting text-2xl sm:text-3xl md:text-4xl text-red-400/90 tracking-wide leading-normal">
                         "난 신세계의 신이 되겠어."
                     </p>
                 </div>
@@ -505,8 +507,7 @@
                     <!-- Image Block -->
                     <div class="md:col-span-5 flex justify-center mt-2 md:mt-0">
                         <div class="relative max-w-[150px] sm:max-w-[180px] md:max-w-[200px] w-full aspect-[2/3] overflow-hidden rounded-xl border border-neutral-800 shadow-2xl group-hover:border-sky-500/30 transition-colors duration-500 bg-neutral-950">
-                            <!-- Overlay to prevent the white background of L's art from sticking out too harshly -->
-                            <img src="image_ef889d.jpg" alt="L" class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105" onerror="this.src='https://placehold.co/200x300/0a0a0a/ffffff?text=L'">
+                            <img src="https://placehold.co/200x300/0a0f1a/3399ff?text=L" alt="L" class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105" onerror="this.src='https://placehold.co/200x300/0a0a0a/ffffff?text=L'">
                             <div class="absolute inset-0 bg-neutral-950/20 mix-blend-multiply pointer-events-none"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent pointer-events-none"></div>
                         </div>
@@ -515,8 +516,8 @@
 
                 <div class="mt-8 border-t border-neutral-900 pt-5 flex flex-col gap-2 relative z-10">
                     <span class="text-[9px] text-neutral-500 tracking-wider font-semibold uppercase">L'S REASONING</span>
-                    <p class="font-handwriting text-xl sm:text-2xl md:text-3xl text-sky-400/90 tracking-wide leading-normal">
-                        "이건 신의 심판이 아니라, 신의 심판이라 착각하는 정신 나간 녀석이 있다는 뜻이다."
+                    <p class="font-handwriting text-2xl sm:text-3xl md:text-4xl text-sky-400/90 tracking-wide leading-normal">
+                        "이건 신의 심판이 아니라 유치한 살인일 뿐이다."
                     </p>
                 </div>
             </div>
@@ -553,7 +554,7 @@
                         <div class="w-11 h-11 rounded-lg bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-6">
                             <i class="fa-solid fa-puzzle-piece text-sky-400/80 text-sm"></i>
                         </div>
-                        <h4 class="text-sm sm:text-base font-bold text-neutral-100 mb-3">02. 얼굴 and 이름을 감춘 두뇌 싸움</h4>
+                        <h4 class="text-sm sm:text-base font-bold text-neutral-100 mb-3">02. 얼굴과 이름을 감춘 두뇌 싸움</h4>
                         <p class="text-xs text-neutral-400 leading-relaxed">
                             물리적 무력이 아닌, 순수한 지능과 논리로 벌이는 극한의 심리전. 상대방의 이름과 얼굴을 먼저 알아내기 위한 최고의 하이테크 추리 게임이 펼쳐집니다.
                         </p>
@@ -567,9 +568,9 @@
                         <div class="w-11 h-11 rounded-lg bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-6">
                             <i class="fa-solid fa-mask text-neutral-500 text-sm"></i>
                         </div>
-                        <h4 class="text-sm sm:text-base font-bold text-neutral-100 mb-3">03. 권력의 타락과 한계</h4>
+                        <h4 class="text-sm sm:text-base font-bold text-neutral-100 mb-3">03. 절대 권력의 타락과 비극</h4>
                         <p class="text-xs text-neutral-400 leading-relaxed">
-                            절대 권력을 쥔 인간이 어디까지 파멸해 나갈 수 있는가에 대한 철학적 비극. 단순 권선징악을 뛰어넘은 깊이 있는 고전을 소장하게 됩니다.
+                            절대 권력을 쥔 인간이 서서히 악으로 물들어가며 파멸해 나가는 비극적 서사. 단순한 권선징악을 뛰어넘은 깊이 있는 고전적 고뇌를 전달합니다.
                         </p>
                     </div>
                     <span class="text-[9px] text-neutral-600 font-mono tracking-widest uppercase mt-6">HUMAN SOUL BOUNDARIES</span>
@@ -642,7 +643,7 @@
                         <!-- L Result -->
                         <div>
                             <div class="flex justify-between text-xs font-semibold mb-1.5">
-                                <span class="text-sky-400">L 지지 (보편적 인권정의론)</span>
+                                <span class="text-sky-400">L 지지 (보편적 정의론)</span>
                                 <span id="l-percent" class="font-mono text-sky-400 font-bold">0%</span>
                             </div>
                             <div class="w-full bg-neutral-900/50 h-3.5 rounded-full overflow-hidden border border-neutral-800">
@@ -878,43 +879,109 @@
             }
         }
 
-        // Particle System Engine
+        // 고도화된 캔버스 사신 세계 재/먼지 파티클 엔진
         function initParticles() {
             const canvas = document.getElementById('particle-canvas');
             const ctx = canvas.getContext('2d');
             let particles = [];
+            let mouse = { x: null, y: null, radius: 100 };
             
             function resize() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             }
+            
             window.addEventListener('resize', resize);
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.x;
+                mouse.y = e.y;
+            });
+            window.addEventListener('mouseleave', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+            // 터치 디바이스 지원
+            window.addEventListener('touchmove', (e) => {
+                if(e.touches.length > 0) {
+                    mouse.x = e.touches[0].clientX;
+                    mouse.y = e.touches[0].clientY;
+                }
+            });
+            window.addEventListener('touchend', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
             resize();
 
-            for (let i = 0; i < 70; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.3,
-                    vy: (Math.random() - 0.5) * 0.3,
-                    size: Math.random() * 1.5 + 0.5,
-                    opacity: Math.random() * 0.2 + 0.05
-                });
+            // 파티클 클래스 선언
+            class Particle {
+                constructor() {
+                    this.reset();
+                    // 초기 퍼짐을 위해 무작위 위치 지정
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                }
+
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = -20; // 화면 상단에서 생성되어 아래로 하강
+                    this.size = Math.random() * 2.5 + 0.5; // 미세한 크기 다양화
+                    this.speedY = Math.random() * 0.4 + 0.1; // 천천히 내려앉음
+                    this.speedX = (Math.random() - 0.5) * 0.3; // 미세한 좌우 흔들림
+                    this.angle = Math.random() * Math.PI * 2;
+                    this.spin = Math.random() * 0.01 - 0.005;
+                    this.opacity = Math.random() * 0.4 + 0.1;
+                }
+
+                update() {
+                    this.angle += this.spin;
+                    this.y += this.speedY;
+                    this.x += this.speedX + Math.sin(this.angle) * 0.1; // 자연스러운 지그재그 하강
+
+                    // 화면 경계를 벗어나면 초기화
+                    if (this.y > canvas.height + 20 || this.x < -20 || this.x > canvas.width + 20) {
+                        this.reset();
+                    }
+
+                    // 마우스와의 반발 물리 작용 (은은한 밀어내기)
+                    if (mouse.x !== null && mouse.y !== null) {
+                        let dx = this.x - mouse.x;
+                        let dy = this.y - mouse.y;
+                        let distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < mouse.radius) {
+                            let force = (mouse.radius - distance) / mouse.radius;
+                            let directionX = dx / distance;
+                            let directionY = dy / distance;
+                            this.x += directionX * force * 2;
+                            this.y += directionY * force * 2;
+                        }
+                    }
+                }
+
+                draw() {
+                    // 테마 상태에 맞춰 동적으로 파티클 컬러 변경
+                    const colorValue = (currentTheme === 'dark') ? '255, 255, 255' : '0, 0, 0';
+                    ctx.fillStyle = `rgba(${colorValue}, ${this.opacity})`;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            // 파티클 배열 채우기
+            const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 15000));
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
             }
 
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => {
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                    
-                    ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fill();
-                });
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
                 requestAnimationFrame(animate);
             }
             animate();
@@ -1146,7 +1213,7 @@
             // Setup active theme from storage
             initTheme();
             
-            // Initialize subtle particles
+            // Initialize high-quality interactive dust particles
             initParticles();
 
             // Keep real hidden input active on cover touch
