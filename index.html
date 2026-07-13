@@ -289,8 +289,8 @@
     <!-- Background Noise/Pattern -->
     <div class="fixed inset-0 notebook-lines opacity-50 pointer-events-none z-[1]"></div>
     
-    <!-- 고품질의 은은하고 인터랙티브한 사신 세계 먼지 파티클 캔버스 -->
-    <canvas id="particle-canvas" class="fixed inset-0 z-[2] pointer-events-none"></canvas>
+    <!-- Subtle Moving Particles Canvas (z-index 조정을 통해 어두운 카드 위에서도 완벽히 보이도록 설정) -->
+    <canvas id="particle-canvas" class="fixed inset-0 z-20 pointer-events-none"></canvas>
 
     <!-- Sound & System Toggle Controllers -->
     <div class="fixed top-6 right-6 z-50 flex items-center gap-3">
@@ -879,109 +879,83 @@
             }
         }
 
-        // 고도화된 캔버스 사신 세계 재/먼지 파티클 엔진
+        // Particle System Engine (붉은 불씨 및 낙하/상승 재 시뮬레이션)
         function initParticles() {
             const canvas = document.getElementById('particle-canvas');
             const ctx = canvas.getContext('2d');
             let particles = [];
-            let mouse = { x: null, y: null, radius: 100 };
             
             function resize() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             }
-            
             window.addEventListener('resize', resize);
-            window.addEventListener('mousemove', (e) => {
-                mouse.x = e.x;
-                mouse.y = e.y;
-            });
-            window.addEventListener('mouseleave', () => {
-                mouse.x = null;
-                mouse.y = null;
-            });
-
-            // 터치 디바이스 지원
-            window.addEventListener('touchmove', (e) => {
-                if(e.touches.length > 0) {
-                    mouse.x = e.touches[0].clientX;
-                    mouse.y = e.touches[0].clientY;
-                }
-            });
-            window.addEventListener('touchend', () => {
-                mouse.x = null;
-                mouse.y = null;
-            });
-
             resize();
 
-            // 파티클 클래스 선언
-            class Particle {
-                constructor() {
-                    this.reset();
-                    // 초기 퍼짐을 위해 무작위 위치 지정
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                }
-
-                reset() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = -20; // 화면 상단에서 생성되어 아래로 하강
-                    this.size = Math.random() * 2.5 + 0.5; // 미세한 크기 다양화
-                    this.speedY = Math.random() * 0.4 + 0.1; // 천천히 내려앉음
-                    this.speedX = (Math.random() - 0.5) * 0.3; // 미세한 좌우 흔들림
-                    this.angle = Math.random() * Math.PI * 2;
-                    this.spin = Math.random() * 0.01 - 0.005;
-                    this.opacity = Math.random() * 0.4 + 0.1;
-                }
-
-                update() {
-                    this.angle += this.spin;
-                    this.y += this.speedY;
-                    this.x += this.speedX + Math.sin(this.angle) * 0.1; // 자연스러운 지그재그 하강
-
-                    // 화면 경계를 벗어나면 초기화
-                    if (this.y > canvas.height + 20 || this.x < -20 || this.x > canvas.width + 20) {
-                        this.reset();
-                    }
-
-                    // 마우스와의 반발 물리 작용 (은은한 밀어내기)
-                    if (mouse.x !== null && mouse.y !== null) {
-                        let dx = this.x - mouse.x;
-                        let dy = this.y - mouse.y;
-                        let distance = Math.sqrt(dx * dx + dy * dy);
-                        if (distance < mouse.radius) {
-                            let force = (mouse.radius - distance) / mouse.radius;
-                            let directionX = dx / distance;
-                            let directionY = dy / distance;
-                            this.x += directionX * force * 2;
-                            this.y += directionY * force * 2;
-                        }
-                    }
-                }
-
-                draw() {
-                    // 테마 상태에 맞춰 동적으로 파티클 컬러 변경
-                    const colorValue = (currentTheme === 'dark') ? '255, 255, 255' : '0, 0, 0';
-                    ctx.fillStyle = `rgba(${colorValue}, ${this.opacity})`;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
-            // 파티클 배열 채우기
-            const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 15000));
+            // 파티클 개수 증가 및 비주얼 존재감 강화
+            const particleCount = 130;
             for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height + canvas.height * 0.2, // 화면 전반 분산
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: -(Math.random() * 0.9 + 0.3), // 아날로그 연기처럼 서서히 위로 상승하는 흐름
+                    size: Math.random() * 3.2 + 0.8,  // 파티클 크기 확대 (더 선명하게 인지됨)
+                    opacity: Math.random() * 0.45 + 0.15, // 불투명도 증가 (가시성 대폭 확보)
+                    frequency: Math.random() * 0.015 + 0.005, // 흔들림 주기
+                    phase: Math.random() * Math.PI * 2
+                });
             }
 
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < particles.length; i++) {
-                    particles[i].update();
-                    particles[i].draw();
-                }
+                
+                // 현재 테마 실시간 파악
+                const isLight = document.body.classList.contains('light-theme');
+                
+                particles.forEach(p => {
+                    // 자연스러운 S자 곡선(지그재그) 상승 기류 추가
+                    p.phase += p.frequency;
+                    p.x += p.vx + Math.sin(p.phase) * 0.25;
+                    p.y += p.vy;
+
+                    // 화면 상단으로 사라지면 다시 바닥에서 재생성하여 순환시킴
+                    if (p.y < -15) {
+                        p.y = canvas.height + 15;
+                        p.x = Math.random() * canvas.width;
+                        p.opacity = Math.random() * 0.45 + 0.15;
+                    }
+                    if (p.x < -15 || p.x > canvas.width + 15) {
+                        p.x = Math.random() * canvas.width;
+                    }
+                    
+                    // 다크 모드에서는 타오르는 생생한 붉은 불씨와 하얀 재가 섞여 날리는 효과 적용
+                    if (isLight) {
+                        // 라이트 모드: 어두운 아날로그 잉크 가루 및 빈티지 먼지 연출
+                        ctx.shadowBlur = 0;
+                        ctx.fillStyle = `rgba(50, 48, 40, ${p.opacity})`;
+                    } else {
+                        // 다크 모드: 신비롭게 발광하는 붉은 불씨(Embers) 및 차가운 재(Ashes)의 콜라보
+                        if (p.size > 2.2) {
+                            // 큰 입자: 붉게 이글거리는 불씨 (네온 글로우 장착)
+                            ctx.shadowBlur = 6;
+                            ctx.shadowColor = 'rgba(239, 68, 68, 0.7)';
+                            ctx.fillStyle = `rgba(239, 68, 68, ${p.opacity + 0.15})`;
+                        } else {
+                            // 작은 입자: 스산하게 흩날리는 백색 사신 세계의 먼지
+                            ctx.shadowBlur = 3;
+                            ctx.shadowColor = 'rgba(255, 255, 255, 0.3)';
+                            ctx.fillStyle = `rgba(240, 240, 240, ${p.opacity})`;
+                        }
+                    }
+                    
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                
+                // 드로잉 콘텍스트 그림자 초기화 (다음 레이아웃 요소들에 번짐 방지)
+                ctx.shadowBlur = 0;
                 requestAnimationFrame(animate);
             }
             animate();
